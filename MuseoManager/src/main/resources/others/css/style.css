@@ -1,0 +1,62 @@
+/* ✅ Botones: borde fino, sin modificar el tamaño */
+.button {
+    -fx-background-color: #f0f0f0; /* color claro */
+    -fx-text-fill: #2c3e50;        /* texto gris oscuro */
+    -fx-border-color: #888888;     /* borde gris visible */
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+    -fx-padding: 5 10;
+}
+
+/* ✅ Hover del botón: cambia color del fondo */
+.button:hover {
+    -fx-background-color: #dcdcdc;
+}
+
+/* ✅ Labels: borde fino también */
+.label {
+    -fx-border-color: #aaaaaa;
+    -fx-border-width: 1;
+    -fx-padding: 3;
+    -fx-font-size: 13px;
+    -fx-text-fill: #2c3e50;
+}
+
+/* ✅ TextFields: sin exagerar el cambio visual */
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: #999999;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 4 8;
+    -fx-font-size: 13px;
+}
+
+/* Focus del TextField */
+.text-field:focused {
+    -fx-border-color: #2980b9;
+}
+
+/* VBox y AnchorPane conservan fondo simple */
+.vbox {
+    -fx-spacing: 10;
+}
+
+.anchor-pane {
+    -fx-background-color: #ffffff;
+}
+
+/* TitledPane con estilo sutil */
+.titled-pane {
+    -fx-border-color: #cccccc;
+    -fx-background-color: #f9f9f9;
+}
+
+.titled-pane > .title {
+    -fx-background-color: #e0e0e0;
+    -fx-text-fill: #2c3e50;
+    -fx-padding: 6 10;
+}
