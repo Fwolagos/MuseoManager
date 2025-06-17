@@ -18,11 +18,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
  *
- * @author Estudiante
+ * @author ANTONY JOSUE
  */
 @Entity
 @Table(name = "MM_PRECIO_DE_ENTRADAS")
@@ -36,7 +37,9 @@ public class MmPrecioDeEntradas implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mm_precio_de_entradas_gen")
+    @SequenceGenerator(name = "mm_precio_de_entradas_gen", sequenceName = "SEQ_MM_PRECIO_DE_ENTRADAS", allocationSize = 1)
+
     @Basic(optional = false)
     @Column(name = "ID")
     private BigDecimal id;
@@ -45,7 +48,7 @@ public class MmPrecioDeEntradas implements Serializable {
     @Column(name = "COSTO_SAB_DOM")
     private BigInteger costoSabDom;
     @JoinColumn(name = "ID_MUSEO", referencedColumnName = "ID")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private MmMuseos idMuseo;
 
     public MmPrecioDeEntradas() {
@@ -111,5 +114,5 @@ public class MmPrecioDeEntradas implements Serializable {
     public String toString() {
         return "com.mycompany.museomanager.database.MmPrecioDeEntradas[ id=" + id + " ]";
     }
-    
+
 }

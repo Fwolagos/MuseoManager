@@ -5,6 +5,8 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -18,38 +20,55 @@
    <children>
       <StackPane layoutX="248.0" layoutY="78.0" prefHeight="658.0" prefWidth="642.0">
          <children>
-            <AnchorPane fx:id="apCollections" layoutX="10.0" layoutY="10.0" />
-            <AnchorPane fx:id="apThemes" layoutX="10.0" layoutY="10.0" />
-            <AnchorPane fx:id="apPrices" layoutX="10.0" layoutY="10.0" />
-            <AnchorPane fx:id="apCommissions" layoutX="10.0" layoutY="10.0" />
-            <AnchorPane fx:id="apSellTickets" layoutX="10.0" layoutY="10.0" />
-            <AnchorPane fx:id="apValidateTickets" layoutX="10.0" layoutY="10.0" />
-            <AnchorPane fx:id="apRateRoom" layoutX="10.0" layoutY="10.0" />
-            <AnchorPane fx:id="apGenerateReport" />
-            <AnchorPane fx:id="apRooms" layoutX="10.0" layoutY="10.0" visible="false">
+            <AnchorPane fx:id="apValidateTickets" layoutX="10.0" layoutY="10.0" visible="false">
                <children>
-                  <TableView layoutX="13.0" layoutY="296.0" prefHeight="348.0" prefWidth="616.0" />
-                  <Label layoutX="14.0" layoutY="14.0" text="ID Museo:" />
-                  <Button layoutX="378.0" layoutY="79.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="164.0" text="Hacer Búsqueda" />
-                  <TextField layoutX="133.0" layoutY="49.0" />
-                  <ComboBox layoutX="133.0" layoutY="15.0" prefHeight="26.0" prefWidth="164.0" />
-                  <Label layoutX="14.0" layoutY="49.0" text="Nombre De Sala:" />
-                  <Label layoutX="14.0" layoutY="82.0" text="Tipo De Sala:" />
-                  <Label layoutX="14.0" layoutY="117.0" text="Descripción:" />
-                  <ComboBox layoutX="133.0" layoutY="82.0" prefHeight="26.0" prefWidth="164.0" />
-                  <TextArea layoutX="133.0" layoutY="117.0" prefHeight="78.0" prefWidth="164.0" />
-                  <Label layoutX="321.0" layoutY="14.0" text="Buscar:" />
-                  <TextField layoutX="376.0" layoutY="14.0" />
-                  <CheckBox layoutX="454.0" layoutY="54.0" mnemonicParsing="false" text="ID" />
-                  <CheckBox layoutX="376.0" layoutY="54.0" mnemonicParsing="false" text="Nombre" />
-                  <Label layoutX="8.0" layoutY="259.0" text="Filtrar por tipo:" />
-                  <CheckBox layoutX="119.0" layoutY="264.0" mnemonicParsing="false" text="Tipo 1" />
+                  <Button fx:id="btnReadQRCodeValidateTicket" layoutX="86.0" layoutY="51.0" mnemonicParsing="false" prefHeight="243.0" prefWidth="484.0" text="Lea su código QR aquí" />
+                  <Label fx:id="lbDateValidateTicket" layoutX="570.0" layoutY="7.0" text="00/00/00" />
+                  <TableView fx:id="tbvValidateTickets" layoutX="14.0" layoutY="372.0" prefHeight="230.0" prefWidth="616.0">
+                    <columns>
+                      <TableColumn fx:id="clmRoomsValidateTicket" prefWidth="477.60003662109375" text="Salas a Visitar" />
+                        <TableColumn fx:id="clmRateSellTicket" prefWidth="131.99993896484375" text="Valoración" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="201.0" layoutY="323.0" text="Hoy Puede Ingresar A Las Siguientes Salas:" />
+                  <Label layoutX="216.0" layoutY="616.0" text="Doble Clic sobre la salas para Calificar" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="apSpecies" layoutX="10.0" layoutY="10.0" />
-            <AnchorPane fx:id="apMuseo" layoutX="10.0" layoutY="10.0" prefHeight="638.0" prefWidth="642.0">
+            <AnchorPane fx:id="apRateRoom" layoutX="10.0" layoutY="10.0" visible="false">
                <children>
-                  <TableView fx:id="tbvMuseum" layoutX="14.0" layoutY="251.0" prefHeight="394.0" prefWidth="616.0" />
+                  <Label fx:id="lbDateRateRoom" layoutX="557.0" layoutY="6.0" text="00/00/0000" />
+                  <ImageView fx:id="ivRateRoom" fitHeight="150.0" fitWidth="200.0" layoutX="79.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="btnNextRateRoom" layoutX="306.0" layoutY="180.0" mnemonicParsing="false" text="Next" />
+                  <Button fx:id="btnBackRateRoom" layoutX="14.0" layoutY="180.0" mnemonicParsing="false" text="Back" />
+                  <Label layoutX="160.0" layoutY="85.0" text="Sala" />
+                  <Label fx:id="lbStartsRateRoom" layoutX="160.0" layoutY="291.0" text="Estrellas" />
+                  <Label layoutX="25.0" layoutY="398.0" text="Observaciones:" />
+                  <TextArea fx:id="taRateRoom" layoutX="25.0" layoutY="435.0" prefHeight="200.0" prefWidth="604.0" promptText="Escribir su opinion acerca de la sala visitada " />
+                  <Spinner fx:id="spnStartsRateRoom" layoutX="480.0" layoutY="399.0" />
+                  <Label layoutX="306.0" layoutY="398.0" text="Calificar del 1 a 5 estrellas:" />
+                  <Label layoutX="361.0" layoutY="58.0" text="Nombre de Sala:" />
+                  <TextField fx:id="tfNameRoomRateRoom" layoutX="475.0" layoutY="57.0" />
+                  <Label layoutX="361.0" layoutY="107.0" text="Descripción:" />
+                  <TextArea fx:id="taDescriptionRateRoom" layoutX="475.0" layoutY="107.0" prefHeight="85.0" prefWidth="164.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="apGenerateReport" visible="false">
+               <children>
+                  <ComboBox fx:id="cbGenerateReport" layoutX="237.0" layoutY="234.0" prefWidth="150.0" />
+                  <Label layoutX="81.0" layoutY="233.0" prefHeight="27.0" prefWidth="118.0" text="Tipo de Reporte:" />
+                  <Button fx:id="btnDownloadReport" layoutX="428.0" layoutY="231.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="133.0" text="Descargar Reporte" />
+               </children></AnchorPane>
+            <AnchorPane fx:id="apMuseo" layoutX="10.0" layoutY="10.0" prefHeight="638.0" prefWidth="642.0" visible="false">
+               <children>
+                  <TableView fx:id="tbvMuseum" layoutX="14.0" layoutY="251.0" prefHeight="394.0" prefWidth="616.0">
+                     <columns>
+                        <TableColumn fx:id="clmIdMuseum" prefWidth="27.99993896484375" text="ID" />
+                        <TableColumn fx:id="clmNameMuseum" prefWidth="83.199951171875" text="Nombre" />
+                        <TableColumn fx:id="clmTypeMuseum" prefWidth="115.20001220703125" text="Tipo de Museo" />
+                        <TableColumn fx:id="clmLocateMuseum" prefWidth="85.60000610351562" text="Ubicación" />
+                        <TableColumn fx:id="clmURLMuseum" prefWidth="81.5999755859375" text="URL" />
+                        <TableColumn fx:id="clmFundationMuseum" prefWidth="128.800048828125" text="Fundanción" />
+                     </columns></TableView>
                   <Label layoutX="14.0" layoutY="14.0" text="Nombre Del Museo:" />
                   <TextField fx:id="tfMuseumName" layoutX="143.0" layoutY="13.0" />
                   <Button fx:id="btnAddMuseum" layoutX="14.0" layoutY="201.0" mnemonicParsing="false" text="Agregar" />
@@ -70,13 +89,206 @@
                   <CheckBox layoutX="391.0" layoutY="54.0" mnemonicParsing="false" text="Nombre" />
                </children>
             </AnchorPane>
+            <AnchorPane fx:id="apRooms" layoutX="10.0" layoutY="10.0" visible="false">
+               <children>
+                  <TableView fx:id="tbvRooms" layoutX="6.0" layoutY="302.0" prefHeight="355.0" prefWidth="630.0">
+                     <columns>
+                        <TableColumn fx:id="clmIdRoom" prefWidth="75.0" text="ID" />
+                        <TableColumn fx:id="clmIdMuseumRoom" prefWidth="75.0" text="ID Museo" />
+                        <TableColumn fx:id="clmNameRoom" prefWidth="116.00003051757812" text="Nombre de sala" />
+                        <TableColumn fx:id="clmTypeRoom" prefWidth="92.00006103515625" text="Tipo De Sala" />
+                        <TableColumn fx:id="clmDescriptionRoom" prefWidth="103.2000732421875" text="Descripción" />
+                     </columns></TableView>
+                  <Label layoutX="14.0" layoutY="14.0" text="ID Museo:" />
+                  <Button fx:id="btnSearchRoom" layoutX="378.0" layoutY="79.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="164.0" text="Hacer Búsqueda" />
+                  <TextField fx:id="tfNameRoom" layoutX="133.0" layoutY="49.0" />
+                  <ComboBox fx:id="cbIdMuseumRoom" layoutX="133.0" layoutY="15.0" prefHeight="26.0" prefWidth="164.0" />
+                  <Label layoutX="14.0" layoutY="49.0" text="Nombre De Sala:" />
+                  <Label layoutX="14.0" layoutY="82.0" text="Tipo De Sala:" />
+                  <Label layoutX="14.0" layoutY="117.0" text="Descripción:" />
+                  <ComboBox fx:id="cbTypeRoom" layoutX="133.0" layoutY="82.0" prefHeight="26.0" prefWidth="164.0" />
+                  <TextArea fx:id="taDescriptionRoom" layoutX="133.0" layoutY="117.0" prefHeight="78.0" prefWidth="164.0" />
+                  <Label layoutX="321.0" layoutY="14.0" text="Buscar:" />
+                  <TextField fx:id="tfSearchRoom" layoutX="376.0" layoutY="14.0" />
+                  <CheckBox layoutX="454.0" layoutY="54.0" mnemonicParsing="false" text="ID" />
+                  <CheckBox layoutX="376.0" layoutY="54.0" mnemonicParsing="false" text="Nombre" />
+                  <Label layoutX="8.0" layoutY="259.0" text="Filtrar por tipo:" />
+                  <CheckBox layoutX="119.0" layoutY="264.0" mnemonicParsing="false" text="Tipo 1" />
+                  <Button fx:id="btnAddRoom" layoutX="10.0" layoutY="206.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="74.0" text="Agregar" />
+                  <Button fx:id="btnUpdateRoom" layoutX="119.0" layoutY="206.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="82.0" text="Actualizar" />
+                  <Button fx:id="btnDeleteRoom" layoutX="222.0" layoutY="206.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="82.0" text="Eliminar" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="apCollections" layoutX="10.0" layoutY="10.0" visible="false">
+               <children>
+                  <Label layoutX="19.0" layoutY="52.0" text="ID Sala:" />
+                  <Label layoutX="19.0" layoutY="14.0" text="Nombre de la Colección:" />
+                  <Label layoutX="24.0" layoutY="134.0" text="Descripción:" />
+                  <Label layoutX="24.0" layoutY="95.0" text="Siglo:" />
+                  <TextField fx:id="tfNameCollection" layoutX="179.0" layoutY="13.0" />
+                  <TableView fx:id="tbvCollections" layoutX="4.0" layoutY="258.0" prefHeight="394.0" prefWidth="636.0">
+                    <columns>
+                      <TableColumn fx:id="clmIdCollection" prefWidth="75.0" text="ID" />
+                      <TableColumn fx:id="clmIdRoomCollection" prefWidth="75.0" text="ID Sala" />
+                        <TableColumn fx:id="clmNameCollection" prefWidth="145.60003662109375" text="Nombre de colección" />
+                        <TableColumn fx:id="clmCenturyCollection" prefWidth="50.4000244140625" text="Siglo" />
+                        <TableColumn fx:id="clmDescriptionCollection" prefWidth="287.20001220703125" text="Descripción" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="btnAddCollection" layoutX="19.0" layoutY="219.0" mnemonicParsing="false" text="Agregar" />
+                  <ComboBox fx:id="cbIdRoom" layoutX="179.0" layoutY="53.0" prefWidth="150.0" />
+                  <Spinner fx:id="spnCentury" layoutX="180.0" layoutY="96.0" />
+                  <TextArea fx:id="taDescriptionCollection" layoutX="180.0" layoutY="132.0" prefHeight="78.0" prefWidth="200.0" />
+                  <Button fx:id="btnUpdateCollection" layoutX="110.0" layoutY="219.0" mnemonicParsing="false" text="Actualizar" />
+                  <Button fx:id="btnDeleteCollections" layoutX="214.0" layoutY="219.0" mnemonicParsing="false" text="Eliminar" />
+                  <Button fx:id="btnSearchCollection" layoutX="496.0" layoutY="50.0" mnemonicParsing="false" text="Buscar" />
+                  <TextField fx:id="tfSearchCollection" layoutX="448.0" layoutY="13.0" promptText="Buscar Por ID" />
+               </children></AnchorPane>
+            <AnchorPane fx:id="apSpecies" layoutX="10.0" layoutY="10.0" visible="false">
+               <children>
+                  <TextField fx:id="tfNameScientist" layoutX="138.0" layoutY="53.0" />
+                  <Label layoutX="20.0" layoutY="14.0" text="ID Colección:" />
+                  <Button fx:id="btnAddSpecie" layoutX="20.0" layoutY="216.0" mnemonicParsing="false" text="Agregar" />
+                  <TableView fx:id="tbvSpecies" layoutX="3.0" layoutY="329.0" prefHeight="324.0" prefWidth="636.0">
+                    <columns>
+                      <TableColumn fx:id="clmIdSpecie" prefWidth="32.80003356933594" text="ID" />
+                      <TableColumn fx:id="clmIdCollectionSpecie" prefWidth="72.79998779296875" text="ID Colección" />
+                        <TableColumn fx:id="clmNameScientistSpecie" prefWidth="100.0" text="Nombre Cientifico" />
+                        <TableColumn fx:id="clmNameCommonSpecie" prefWidth="95.99993896484375" text="Nombre común" />
+                        <TableColumn fx:id="clmExpirationDateSpecie" prefWidth="71.199951171875" text="Extinguido" />
+                        <TableColumn fx:id="clmEpochSpecie" prefWidth="48.00006103515625" text="Epoca" />
+                        <TableColumn fx:id="clmWeightSpecie" prefWidth="44.7999267578125" text="Peso" />
+                        <TableColumn fx:id="clmSizeSpecie" prefWidth="68.8001708984375" text="Tamaño" />
+                        <TableColumn fx:id="clmcharacteristicSpecie" prefWidth="163.9998779296875" text="Características" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="20.0" layoutY="54.0" text="Nombre Cientifico:" />
+                  <Label layoutX="20.0" layoutY="94.0" text="Nombre Común:" />
+                  <Label layoutX="20.0" layoutY="133.0" text="Fecha de Extinción:" />
+                  <Label layoutX="20.0" layoutY="175.0" text="Epoca:" />
+                  <Label layoutX="358.0" layoutY="14.0" text="Peso:" />
+                  <Label layoutX="358.0" layoutY="54.0" text="Tamaño:" />
+                  <Label layoutX="358.0" layoutY="94.0" text="Características:" />
+                  <ComboBox fx:id="cbIdCollectionsSpecies" layoutX="138.0" layoutY="15.0" prefWidth="150.0" />
+                  <TextField fx:id="tfNameCommon" layoutX="138.0" layoutY="93.0" />
+                  <DatePicker fx:id="dtpExpirationDate" layoutX="141.0" layoutY="134.0" />
+                  <TextField fx:id="tfEpoch" layoutX="138.0" layoutY="174.0" />
+                  <TextArea fx:id="taCharacteristicSpecie" layoutX="459.0" layoutY="91.0" prefHeight="117.0" prefWidth="178.0" />
+                  <Spinner fx:id="spnSizeSpecie" layoutX="459.0" layoutY="55.0" />
+                  <Spinner fx:id="spnWeigthSpecie" layoutX="459.0" layoutY="13.0" />
+                  <Button fx:id="btnUpdateSpecie" layoutX="107.0" layoutY="216.0" mnemonicParsing="false" text="Actualizar" />
+                  <Button fx:id="btnDeleteSpecie" layoutX="208.0" layoutY="216.0" mnemonicParsing="false" text="Eliminar" />
+                  <TextField fx:id="tfSearchSpecie" layoutX="314.0" layoutY="218.0" promptText="Buscar por ID" />
+                  <Button fx:id="btnSearchSpecie" layoutX="506.0" layoutY="216.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="118.0" text="Buscar" />
+               </children></AnchorPane>
+            <AnchorPane fx:id="apThemes" layoutX="10.0" layoutY="10.0" visible="false">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="ID Sala:" />
+                  <Label layoutX="14.0" layoutY="52.0" text="Nombre de la temática:" />
+                  <Label layoutX="15.0" layoutY="140.0" text="Características:" />
+                  <Label layoutX="16.0" layoutY="94.0" text="Epoca:" />
+                  <ComboBox fx:id="cbIdRoomTheme" layoutX="157.0" layoutY="15.0" prefWidth="150.0" />
+                  <TextField fx:id="tfNameTheme" layoutX="158.0" layoutY="53.0" />
+                  <TextArea fx:id="taCharacteristicTheme" layoutX="157.0" layoutY="140.0" prefHeight="78.0" prefWidth="200.0" />
+                  <Button fx:id="btnAddTheme" layoutX="16.0" layoutY="227.0" mnemonicParsing="false" text="Agregar" />
+                  <Button fx:id="btnUpdateTheme" layoutX="100.0" layoutY="227.0" mnemonicParsing="false" text="Actualizar" />
+                  <Button fx:id="btnDeleteTheme" layoutX="200.0" layoutY="227.0" mnemonicParsing="false" text="Eliminar" />
+                  <TextField fx:id="tfSearchTheme" layoutX="418.0" layoutY="13.0" promptText="Buscar por ID" />
+                  <Button fx:id="btnSearchTheme" layoutX="418.0" layoutY="51.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="164.0" text="Buscar" />
+                  <TableView fx:id="tbvThemes" layoutX="6.0" layoutY="275.0" prefHeight="377.0" prefWidth="630.0">
+                    <columns>
+                      <TableColumn fx:id="clmIdTheme" prefWidth="75.0" text="ID" />
+                      <TableColumn fx:id="clmIdRoomTheme" prefWidth="75.0" text="ID Sala" />
+                        <TableColumn fx:id="clmNameTheme" prefWidth="159.99993896484375" text="Nombre de la temática" />
+                        <TableColumn fx:id="clmEpochTheme" prefWidth="48.800048828125" text="Epoca" />
+                        <TableColumn fx:id="clmCharacteristicTheme" prefWidth="125.5999755859375" text="Características" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="tfEpochTheme" layoutX="158.0" layoutY="93.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="apPrices" layoutX="10.0" layoutY="10.0" visible="false">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="ID Museo:" />
+                  <Label layoutX="14.0" layoutY="56.0" text="Costo de Lun a Vier:" />
+                  <Label layoutX="14.0" layoutY="98.0" text="Costo de Sab a Dom:" />
+                  <TextField fx:id="tfCostMondayFridayPrice" layoutX="143.0" layoutY="57.0" />
+                  <TextField fx:id="tfCostSaturdaySundayPrice" layoutX="143.0" layoutY="97.0" />
+                  <ComboBox fx:id="cbIdMuseumPrice" layoutX="137.0" layoutY="15.0" prefWidth="150.0" />
+                  <Button fx:id="bntAddPrice" layoutX="14.0" layoutY="147.0" mnemonicParsing="false" text="Agregar" />
+                  <Button fx:id="btnUpdatePrice" layoutX="102.0" layoutY="147.0" mnemonicParsing="false" text="Actualizar" />
+                  <Button fx:id="btnDeletePricce" layoutX="198.0" layoutY="147.0" mnemonicParsing="false" text="Eliminar" />
+                  <TextField fx:id="tfSearchPrice" layoutX="383.0" layoutY="56.0" prefHeight="29.0" prefWidth="212.0" />
+                  <Button fx:id="btnSearchPrice" layoutX="383.0" layoutY="109.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="212.0" text="Buscar" />
+                  <TableView fx:id="tbvPrices" layoutX="3.0" layoutY="194.0" prefHeight="458.0" prefWidth="636.0">
+                    <columns>
+                      <TableColumn fx:id="clmIdPrice" prefWidth="75.0" text="ID" />
+                      <TableColumn fx:id="clmIdMuseumPrice" prefWidth="75.0" text="ID Museo" />
+                        <TableColumn fx:id="clmCostMondayFridayPrice" prefWidth="119.99993896484375" text="Costo Lun a Vier" />
+                        <TableColumn fx:id="clmCostSaturdaySundayPrice" prefWidth="144.7999267578125" text="Costo Sab a Dom" />
+                    </columns>
+                  </TableView>
+               </children></AnchorPane>
+            <AnchorPane fx:id="apCommissions" layoutX="10.0" layoutY="10.0" visible="false">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Tipo De Tarjeta:" />
+                  <Label layoutX="14.0" layoutY="58.0" text="Comisión:" />
+                  <Label layoutX="14.0" layoutY="100.0" text="ID Museo:" />
+                  <ComboBox fx:id="cbTypeCard" layoutX="121.0" layoutY="15.0" prefWidth="150.0" />
+                  <ComboBox fx:id="cbIdMuseumCommission" layoutX="121.0" layoutY="101.0" prefWidth="150.0" />
+                  <TextField fx:id="tfCommission" layoutX="122.0" layoutY="59.0" />
+                  <TextField fx:id="tfSearchCommission" layoutX="348.0" layoutY="28.0" prefHeight="29.0" prefWidth="250.0" promptText="Buscar por ID" />
+                  <Button fx:id="btnAddCommission" layoutX="21.0" layoutY="153.0" mnemonicParsing="false" text="Agregar" />
+                  <Button fx:id="btnUpdateCommission" layoutX="106.0" layoutY="153.0" mnemonicParsing="false" text="Actualizar" />
+                  <Button fx:id="btnDeleteCommission" layoutX="204.0" layoutY="153.0" mnemonicParsing="false" text="Eliminar" />
+                  <Button fx:id="btnSearchCommission" layoutX="348.0" layoutY="72.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="250.0" text="Buscar" />
+                  <TableView fx:id="tbvCommissions" layoutX="5.0" layoutY="204.0" prefHeight="447.0" prefWidth="636.0">
+                    <columns>
+                      <TableColumn fx:id="clmCommission" prefWidth="75.0" text="ID" />
+                      <TableColumn fx:id="clmTypeCardCommission" prefWidth="112.0" text="Tipo de tarjeta" />
+                        <TableColumn fx:id="clmCommission" prefWidth="73.5999755859375" text="Comisión" />
+                        <TableColumn fx:id="clmIdMuseumCommission" prefWidth="76.79998779296875" text="ID Museo" />
+                    </columns>
+                  </TableView>
+               </children></AnchorPane>
+            <AnchorPane fx:id="apSellTickets" layoutX="10.0" layoutY="10.0" visible="false">
+               <children>
+                  <Label layoutX="18.0" layoutY="40.0" text="Nombre del Visitante:" />
+                  <TextField fx:id="tfNameVisitorSellTicket" layoutX="161.0" layoutY="41.0" />
+                  <Label layoutX="359.0" layoutY="41.0" text="Tipo de Tarjeta:" />
+                  <ComboBox fx:id="cbTypeCredicCardSellTicket" layoutX="473.0" layoutY="43.0" prefWidth="150.0" />
+                  <Label fx:id="lbCurrentDate" layoutX="561.0" prefHeight="27.0" prefWidth="78.0" text="Fecha" />
+                  <Label layoutX="18.0" layoutY="100.0" prefHeight="27.0" prefWidth="50.0" text="Museo:" />
+                  <ComboBox fx:id="cbMuseumsSellTicket" layoutX="76.0" layoutY="101.0" prefWidth="150.0" />
+                  <Label layoutX="243.0" layoutY="100.0" text="Días:" />
+                  <DatePicker fx:id="dpDateSellTicket" layoutX="291.0" layoutY="99.0" />
+                  <TableView fx:id="tbvSellTickets" layoutX="14.0" layoutY="161.0" prefHeight="314.0" prefWidth="616.0">
+                    <columns>
+                      <TableColumn fx:id="clmNameMuseumSellTicket" prefWidth="75.0" text="Museo" />
+                      <TableColumn fx:id="clmNameRoomSellTicket" prefWidth="75.0" text="Sala" />
+                        <TableColumn fx:id="clmDateVisitSellTicket" prefWidth="110.39996337890625" text="Fecha de Visita" />
+                        <TableColumn fx:id="clmPriceSellTicket" prefWidth="97.60003662109375" text="Precio" />
+                    </columns>
+                  </TableView>
+                  <ComboBox fx:id="cbRoomsSellTicket" layoutX="198.0" layoutY="498.0" prefWidth="150.0" />
+                  <Label layoutX="13.0" layoutY="497.0" text="Agregar salas que va a visitar:" />
+                  <Button fx:id="btnAddRoomSellTicket" layoutX="372.0" layoutY="495.0" mnemonicParsing="false" text="Agregar Sala" />
+                  <Label layoutX="20.0" layoutY="553.0" text="Sub Total:" />
+                  <Label layoutX="20.0" layoutY="595.0" text="Comisión:" />
+                  <Label layoutX="178.0" layoutY="553.0" text="Total a pagar:" />
+                  <TextField fx:id="lbSubTotalSellTicket" editable="false" layoutX="92.0" layoutY="552.0" prefHeight="30.0" prefWidth="50.0" promptText="0.0" />
+                  <TextField fx:id="lbCommissionSellTicket" editable="false" layoutX="92.0" layoutY="593.0" prefHeight="30.0" prefWidth="50.0" promptText="0.0" />
+                  <TextField fx:id="lbTotalPaySellTicket" editable="false" layoutX="274.0" layoutY="552.0" prefHeight="30.0" prefWidth="50.0" promptText="0.0" />
+                  <Button fx:id="btnSellTicket" layoutX="425.0" layoutY="554.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="143.0" text="Vender" />
+               </children>
+            </AnchorPane>
          </children></StackPane>
       <VBox layoutX="14.0" layoutY="14.0" prefHeight="678.0" prefWidth="224.0">
          <children>
             <AnchorPane>
                <children>
                   <ImageView fitHeight="117.0" fitWidth="193.0" layoutX="17.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label fx:id="lbMiniTitle" layoutX="88.0" layoutY="131.0" prefHeight="27.0" prefWidth="50.0" text="Title" textAlignment="CENTER" />
+                  <Label fx:id="lbMiniTitle" layoutX="17.0" layoutY="128.0" prefHeight="27.0" prefWidth="154.0" text="Main" textAlignment="CENTER" />
                   <Button disable="true" layoutX="185.0" layoutY="142.0" mnemonicParsing="false" opacity="0.0" prefHeight="5.0" prefWidth="25.0" text="Button" />
                </children>
             </AnchorPane>
@@ -141,7 +353,7 @@
             </TitledPane>
          </children>
       </VBox>
-      <Label fx:id="lbMainTitle" layoutX="492.0" layoutY="23.0" prefHeight="24.0" prefWidth="154.0" text="Title" textAlignment="CENTER" />
-      <Button layoutX="821.0" layoutY="24.0" mnemonicParsing="false" text="Exit" />
+      <Label fx:id="lbMainTitle" layoutX="492.0" layoutY="23.0" prefHeight="24.0" prefWidth="154.0" text="Main" textAlignment="CENTER" />
+      <Button fx:id="btnExit" layoutX="821.0" layoutY="24.0" mnemonicParsing="false" text="Exit" />
    </children>
 </AnchorPane>

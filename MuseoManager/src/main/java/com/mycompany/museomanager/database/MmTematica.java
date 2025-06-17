@@ -10,16 +10,19 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
  *
- * @author Estudiante
+ * @author ANTONY JOSUE
  */
 @Entity
 @Table(name = "MM_TEMATICA")
@@ -34,6 +37,9 @@ public class MmTematica implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mm_tematica_gen")
+    @SequenceGenerator(name = "mm_tematica_gen", sequenceName = "SEQ_MM_TEMATICA", allocationSize = 1)
+
     @Basic(optional = false)
     @Column(name = "ID")
     private BigDecimal id;
@@ -44,7 +50,7 @@ public class MmTematica implements Serializable {
     @Column(name = "EPOCA")
     private String epoca;
     @JoinColumn(name = "ID_SALA", referencedColumnName = "ID")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private MmSalas idSala;
 
     public MmTematica() {
@@ -118,5 +124,5 @@ public class MmTematica implements Serializable {
     public String toString() {
         return "com.mycompany.museomanager.database.MmTematica[ id=" + id + " ]";
     }
-    
+
 }

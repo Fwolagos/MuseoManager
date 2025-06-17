@@ -22,13 +22,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
  *
- * @author Estudiante
+ * @author ANTONY JOSUE
  */
 @Entity
 @Table(name = "MM_VENTA_DE_ENTRADAS")
@@ -44,7 +45,9 @@ public class MmVentaDeEntradas implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mm_venta_de_entradas_gen")
+    @SequenceGenerator(name = "mm_venta_de_entradas_gen", sequenceName = "SEQ_MM_VENTA_DE_ENTRADAS", allocationSize = 1)
+
     @Basic(optional = false)
     @Column(name = "ID")
     private BigDecimal id;
@@ -58,9 +61,9 @@ public class MmVentaDeEntradas implements Serializable {
     @Column(name = "VIGENCIA")
     private String vigencia;
     @JoinColumn(name = "ID_MUSEO", referencedColumnName = "ID")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private MmMuseos idMuseo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVenta", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVenta", fetch = FetchType.EAGER)
     private Collection<MmVentasYSalas> mmVentasYSalasCollection;
 
     public MmVentaDeEntradas() {
@@ -150,5 +153,5 @@ public class MmVentaDeEntradas implements Serializable {
     public String toString() {
         return "com.mycompany.museomanager.database.MmVentaDeEntradas[ id=" + id + " ]";
     }
-    
+
 }

@@ -17,31 +17,37 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
  *
- * @author Estudiante
+ * @author ANTONY JOSUE
  */
 @Entity
 @Table(name = "MM_VENTAS_Y_SALAS")
 @NamedQueries({
     @NamedQuery(name = "MmVentasYSalas.findAll", query = "SELECT m FROM MmVentasYSalas m"),
-    @NamedQuery(name = "MmVentasYSalas.findById", query = "SELECT m FROM MmVentasYSalas m WHERE m.id = :id")})
+    @NamedQuery(name = "MmVentasYSalas.findById", query = "SELECT m FROM MmVentasYSalas m WHERE m.id = :id"),
+    @NamedQuery(name = "MmVentasYSalas.findByCalificado", query = "SELECT m FROM MmVentasYSalas m WHERE m.calificado = :calificado")})
 public class MmVentasYSalas implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mm_ventas_y_salas_gen")
+    @SequenceGenerator(name = "mm_ventas_y_salas_gen", sequenceName = "SEQ_MM_VENTAS_Y_SALAS", allocationSize = 1)
+
     @Basic(optional = false)
     @Column(name = "ID")
     private BigDecimal id;
+    @Column(name = "CALIFICADO")
+    private String calificado;
     @JoinColumn(name = "ID_SALA", referencedColumnName = "ID")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private MmSalas idSala;
     @JoinColumn(name = "ID_VENTA", referencedColumnName = "ID")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private MmVentaDeEntradas idVenta;
 
     public MmVentasYSalas() {
@@ -57,6 +63,14 @@ public class MmVentasYSalas implements Serializable {
 
     public void setId(BigDecimal id) {
         this.id = id;
+    }
+
+    public String getCalificado() {
+        return calificado;
+    }
+
+    public void setCalificado(String calificado) {
+        this.calificado = calificado;
     }
 
     public MmSalas getIdSala() {
@@ -99,5 +113,5 @@ public class MmVentasYSalas implements Serializable {
     public String toString() {
         return "com.mycompany.museomanager.database.MmVentasYSalas[ id=" + id + " ]";
     }
-    
+
 }

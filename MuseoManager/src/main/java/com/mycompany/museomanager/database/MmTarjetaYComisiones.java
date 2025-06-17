@@ -18,11 +18,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
  *
- * @author Estudiante
+ * @author ANTONY JOSUE
  */
 @Entity
 @Table(name = "MM_TARJETA_Y_COMISIONES")
@@ -36,7 +37,9 @@ public class MmTarjetaYComisiones implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mm_tarjeta_y_comisiones_gen")
+    @SequenceGenerator(name = "mm_tarjeta_y_comisiones_gen", sequenceName = "SEQ_MM_TARJETA_Y_COMISIONES", allocationSize = 1)
+
     @Basic(optional = false)
     @Column(name = "ID")
     private BigDecimal id;
@@ -45,7 +48,7 @@ public class MmTarjetaYComisiones implements Serializable {
     @Column(name = "COMISION")
     private BigInteger comision;
     @JoinColumn(name = "ID_MUSEO", referencedColumnName = "ID")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private MmMuseos idMuseo;
 
     public MmTarjetaYComisiones() {
@@ -111,5 +114,5 @@ public class MmTarjetaYComisiones implements Serializable {
     public String toString() {
         return "com.mycompany.museomanager.database.MmTarjetaYComisiones[ id=" + id + " ]";
     }
-    
+
 }

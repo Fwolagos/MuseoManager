@@ -20,11 +20,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
  *
- * @author Estudiante
+ * @author ANTONY JOSUE
  */
 @Entity
 @Table(name = "MM_COLECCIONES")
@@ -39,7 +40,8 @@ public class MmColecciones implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mm_colecciones_gen")
+    @SequenceGenerator(name = "mm_colecciones_gen", sequenceName = "SEQ_MM_COLECCIONES", allocationSize = 1)
     @Basic(optional = false)
     @Column(name = "ID")
     private BigDecimal id;
@@ -50,9 +52,9 @@ public class MmColecciones implements Serializable {
     @Column(name = "DESCRIPCION")
     private String descripcion;
     @JoinColumn(name = "ID_SALA", referencedColumnName = "ID")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private MmSalas idSala;
-    @OneToMany(mappedBy = "idColeccion", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idColeccion", fetch = FetchType.EAGER)
     private Collection<MmEspecies> mmEspeciesCollection;
 
     public MmColecciones() {
@@ -134,5 +136,5 @@ public class MmColecciones implements Serializable {
     public String toString() {
         return "com.mycompany.museomanager.database.MmColecciones[ id=" + id + " ]";
     }
-    
+
 }

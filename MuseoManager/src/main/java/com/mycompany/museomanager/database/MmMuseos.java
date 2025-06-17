@@ -19,13 +19,14 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
  *
- * @author Estudiante
+ * @author ANTONY JOSUE
  */
 @Entity
 @Table(name = "MM_MUSEOS")
@@ -42,7 +43,8 @@ public class MmMuseos implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mm_museos_gen")
+    @SequenceGenerator(name = "mm_museos_gen", sequenceName = "SEQ_MM_MUSEOS", allocationSize = 1)
     @Basic(optional = false)
     @Column(name = "ID")
     private BigDecimal id;
@@ -57,13 +59,13 @@ public class MmMuseos implements Serializable {
     @Column(name = "FECHA_DE_FUNDACION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaDeFundacion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMuseo", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMuseo", fetch = FetchType.EAGER)
     private Collection<MmPrecioDeEntradas> mmPrecioDeEntradasCollection;
-    @OneToMany(mappedBy = "idMuseo", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idMuseo", fetch = FetchType.EAGER)
     private Collection<MmSalas> mmSalasCollection;
-    @OneToMany(mappedBy = "idMuseo", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idMuseo", fetch = FetchType.EAGER)
     private Collection<MmVentaDeEntradas> mmVentaDeEntradasCollection;
-    @OneToMany(mappedBy = "idMuseo", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idMuseo", fetch = FetchType.EAGER)
     private Collection<MmTarjetaYComisiones> mmTarjetaYComisionesCollection;
 
     public MmMuseos() {
@@ -177,5 +179,5 @@ public class MmMuseos implements Serializable {
     public String toString() {
         return "com.mycompany.museomanager.database.MmMuseos[ id=" + id + " ]";
     }
-    
+
 }

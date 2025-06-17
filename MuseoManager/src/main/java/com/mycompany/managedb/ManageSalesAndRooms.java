@@ -2,14 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package managedb;
 
-import com.mycompany.museomanager.database.MmVentasYSalas;
+package com.mycompany.managedb;
+
+import java.math.BigDecimal;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.math.BigDecimal;
-import java.util.List;
+
+import com.mycompany.museomanager.database.MmVentasYSalas;
 
 /**
  *
@@ -17,7 +20,7 @@ import java.util.List;
  */
 public class ManageSalesAndRooms {
 
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("user_management");
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("UPMuseumManager");
 
     public void add(MmVentasYSalas entity) {
         EntityManager em = emf.createEntityManager();

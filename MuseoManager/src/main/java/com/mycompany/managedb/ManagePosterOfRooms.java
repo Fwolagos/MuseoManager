@@ -3,18 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.managedb;
-import com.mycompany.museomanager.database.MmAficheDeSalas;
+import java.math.BigDecimal;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.math.BigDecimal;
-import java.util.List;
+
+import com.mycompany.museomanager.database.MmAficheDeSalas;
 /**
  *
  * @author ANTONY JOSUE
  */
 public class ManagePosterOfRooms {
-    	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("user_management");
+    	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("UPMuseumManager");
 
 	public void add(MmAficheDeSalas afiche) {
 		EntityManager em = emf.createEntityManager();

@@ -2,19 +2,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package managedb;
-import com.mycompany.museomanager.database.MmTematica;
+
+package com.mycompany.managedb;
+import java.math.BigDecimal;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.math.BigDecimal;
-import java.util.List;
+
+import com.mycompany.museomanager.database.MmTematica;
 /**
  *
  * @author ANTONY JOSUE
  */
 public class ManageThemes {
-     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("user_management");
+     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("UPMuseumManager");
 
     public void add(MmTematica tematica) {
         EntityManager em = emf.createEntityManager();
